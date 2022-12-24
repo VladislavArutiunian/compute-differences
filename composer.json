@@ -1,5 +1,6 @@
 {
     "name": "hexlet/code",
+    "description": "My 2nd Project on Hexlet",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -20,7 +21,8 @@
 
     },
     "require-dev": {
-    "squizlabs/php_codesniffer": "3.7.1"
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "*"
     },
     "bin": ["bin/gendiff"]
 }

@@ -5,4 +5,4 @@
 
 # Gendiff Hexlet Project
 
-[![asciicast](https://asciinema.org/a/70erEsdwtfXObfxZAUNmPerYB.svg)](https://asciinema.org/a/70erEsdwtfXObfxZAUNmPerYB)
+https://asciinema.org/a/551494?t=4

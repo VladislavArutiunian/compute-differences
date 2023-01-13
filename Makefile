@@ -5,7 +5,7 @@ console:
 	composer exec --verbose psysh
 
 lint:
-	composer exec --verbose ./vendor/bin/phpcs -- --standard=PSR12 src
+	composer exec phpcs -- --standard=PSR12 src/ tests/
 
 test:
 	composer exec --verbose phpunit tests

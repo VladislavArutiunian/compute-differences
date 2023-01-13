@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php
 
-require_once dirname(__DIR__) . '/vendor/autoload.php';
+use function Code\GenDiff\genDiff;
 
-use function Hexlet\Code\gendiff\genDiff;
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 $doc = /** @lang text */
     <<<DOC
@@ -31,5 +31,5 @@ $args = (array) Docopt::handle($doc, $params);
 $firstPath = $args['args']['<firstFile>'];
 $secondPath = $args['args']['<secondFile>'];
 
-$var = genDiff($firstPath, $secondPath);
-\cli\line($var);
+$result = genDiff($firstPath, $secondPath);
+\cli\line($result);

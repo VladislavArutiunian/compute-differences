@@ -1,8 +1,6 @@
 <?php
 
-namespace Hexlet\Code\gendiff;
-
-use function cli\line;
+namespace Code\GenDiff;
 
 function genDiff(string $firstPath, string $secondPath, string $format = 'stylish'): string
 {

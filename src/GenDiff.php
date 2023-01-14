@@ -2,11 +2,11 @@
 
 namespace Code\GenDiff;
 
+use function Code\Parsers\parse;
+
 function genDiff(string $firstPath, string $secondPath, string $format = 'stylish'): string
 {
-    $firstColl = json_decode(file_get_contents($firstPath), true);
-    $secondColl = json_decode(file_get_contents($secondPath), true);
-
+    [$firstColl, $secondColl] = parse($firstPath, $secondPath);
     $res = [];
     foreach ($firstColl as $key => $value) {
         $value = normalize($value);

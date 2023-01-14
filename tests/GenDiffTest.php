@@ -14,11 +14,19 @@ class GenDiffTest extends TestCase
         return realpath(implode('/', $fullPath));
     }
 
-    public function testPlainAbsPath()
+    public function testPlainJson()
     {
         $json1 = $this->getFixtureFullPath('file1.json');
         $json2 = $this->getFixtureFullPath('file2.json');
-        $resultFile = $this->getFixtureFullPath('result.txt');
+        $resultFile = $this->getFixtureFullPath('json_result.txt');
         $this->assertStringEqualsFile($resultFile, genDiff($json1, $json2));
+    }
+
+    public function testPlainYaml()
+    {
+        $yaml1 = $this->getFixtureFullPath('file1.yaml');
+        $yaml2 = $this->getFixtureFullPath('file2.yaml');
+        $resultFile = $this->getFixtureFullPath('yaml_result.txt');
+        $this->assertStringEqualsFile($resultFile, genDiff($yaml1, $yaml2));
     }
 }

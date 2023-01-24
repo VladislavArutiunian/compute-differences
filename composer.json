@@ -9,7 +9,10 @@
         },
         "files": [
             "src/GenDiff.php",
-            "src/Parsers.php"
+            "src/Functional/Parsers.php",
+            "src/Functional/Difference.php",
+            "src/Formatters/Plain.php",
+            "src/Formatters/Stylish.php"
         ]
     },
     "authors": [

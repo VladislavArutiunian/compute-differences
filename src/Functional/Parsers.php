@@ -1,18 +1,14 @@
 <?php
 
-namespace Code\Parsers;
+namespace Code\Functional\Parsers;
 
 use Exception;
 use Symfony\Component\Yaml\Yaml;
 
-function parse(string $firstPath, string $secondPath): array
+function parse(string $filePath): array
 {
-    $firstFileExtension = pathinfo($firstPath, PATHINFO_EXTENSION);
-    $secondFileExtension = pathinfo($secondPath, PATHINFO_EXTENSION);
-    return [
-        convertToArray($firstPath, $firstFileExtension),
-        convertToArray($secondPath, $secondFileExtension)
-    ];
+    $fileExtension = pathinfo($filePath, PATHINFO_EXTENSION);
+    return convertToArray($filePath, $fileExtension);
 }
 
 /**

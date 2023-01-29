@@ -5,11 +5,14 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/183b07deac29774fb259/test_coverage)](https://codeclimate.com/github/VladislavArutiunian/php-project-48/test_coverage)
 
 # Gendiff Hexlet Project
-json
+simple difference - json
 https://asciinema.org/a/551494?t=4
 
-yaml
+simple difference - yaml
 https://asciinema.org/a/551637
 
-nested difference
+nested difference in Stylish Format (json & yaml)
 https://asciinema.org/a/ct3EidGQhX5GE3uZpa9QyEgNh
+
+nested difference in Plain Format (json & yaml)
+https://asciinema.org/a/79w0sZtw9xldcJCw7tA0loK56

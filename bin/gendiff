@@ -30,6 +30,7 @@ $params = [
 $args = (array) Docopt::handle($doc, $params);
 $firstPath = $args['args']['<firstFile>'];
 $secondPath = $args['args']['<secondFile>'];
+$format = $args['args']['--format'] ?? 'stylish';
 
-$result = genDiff($firstPath, $secondPath);
+$result = genDiff($firstPath, $secondPath, $format);
 \cli\line($result);

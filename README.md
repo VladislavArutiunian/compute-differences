@@ -11,4 +11,5 @@ https://asciinema.org/a/551494?t=4
 yaml
 https://asciinema.org/a/551637
 
-yml
+nested difference
+https://asciinema.org/a/ct3EidGQhX5GE3uZpa9QyEgNh

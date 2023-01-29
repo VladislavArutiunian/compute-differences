@@ -19,16 +19,16 @@ function format(mixed $data, int $depth = 1): string
     return implode("\n", $result);
 }
 
-function formatDifference($value, $depth): string
+function formatDifference(array $difference, int $depth): string
 {
     $reducedIndent = str_repeat(DEFAULT_INTEND, $depth - 1);
     $addIntend = $reducedIndent . '  + ';
     $deleteIntend = $reducedIndent . '  - ';
     $savedIntend = str_repeat(DEFAULT_INTEND, $depth);
-    $newValue = Difference\getNewValue($value);
-    $oldValue = Difference\getOldValue($value);
-    $key = Difference\getKey($value);
-    return match (Difference\getStatus($value)) {
+    $newValue = Difference\getNewValue($difference);
+    $oldValue = Difference\getOldValue($difference);
+    $key = Difference\getKey($difference);
+    return match (Difference\getStatus($difference)) {
         'added' => sprintf(
             "$addIntend%s:%s",
             $key, formatValue($newValue, $depth + 1)
@@ -51,14 +51,14 @@ function formatDifference($value, $depth): string
     };
 }
 
-function formatNode($value, $depth): string
+function formatNode(array $node, int $depth): string
 {
     $nodeIndent = str_repeat(DEFAULT_INTEND, $depth);
-    $children = Difference\getChildren($value);
-    return sprintf("$nodeIndent%s: %s", Difference\getKey($value), format($children, $depth + 1));
+    $children = Difference\getChildren($node);
+    return sprintf("$nodeIndent%s: %s", Difference\getKey($node), format($children, $depth + 1));
 }
 
-function formatValue($value, $depth): string
+function formatValue(mixed $value, int $depth): string
 {
     if (!is_array($value)) {
         return ($value === '') ? "" : " $value";

@@ -53,10 +53,3 @@ function isAssocArray(mixed $value): bool
     }
     return count(array_filter(array_keys($value), 'is_string')) == count($value);
 }
-
-/* json -> assoc.array -> create diff method -> return custom type -> formatter creating output from our data type
- [],[] >>>> ['status' => '', 'old value' => '', 'new value' => '']
-
- если оба массива не ассоциативные, то присваивается статус changed
- и значения добавляются в абстракцию как есть
- common => cd, nested => ['nested_key' => cd] */

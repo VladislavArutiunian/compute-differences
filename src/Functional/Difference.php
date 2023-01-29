@@ -22,20 +22,13 @@ function createNode(string $key, array $children): array
     ];
 }
 
-function isDifference(mixed $value): bool
-{
-    if (!is_array($value)) {
-        return false;
-    }
-    return array_key_exists('status', $value);
-}
-
 function normalize(mixed $value): mixed
 {
-    if (is_null($value)) {
-        return 'null';
-    }
-    return (is_bool($value)) ? var_export($value, 1) : $value;
+    return match (\gettype($value)) {
+        "boolean" => var_export($value, 1),
+        "NULL" => 'null',
+        default => $value
+    };
 }
 
 function getOldValue(array $difference): mixed
@@ -48,6 +41,11 @@ function getNewValue(array $difference): mixed
     return $difference['new_value'];
 }
 
+function getChildren(array $node): array
+{
+    return $node['children'];
+}
+
 function getStatus(array $difference): string
 {
     return $difference['status'];
@@ -58,4 +56,7 @@ function getType(array $difference): string
     return $difference['type'];
 }
 
-//
+function getKey(array $difference): string
+{
+    return $difference['key'];
+}

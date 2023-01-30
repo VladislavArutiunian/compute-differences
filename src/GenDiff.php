@@ -1,6 +1,6 @@
 <?php
 
-namespace Code\GenDiff;
+namespace Differ\Differ;
 
 use function Code\Formatters\Plain\format as convertToPlain;
 use function Code\Formatters\Stylish\format as convertToStylish;
@@ -26,7 +26,6 @@ function genDiff(string $firstPath, string $secondPath, string $format = 'stylis
 
 function buildDiff(array $firstColl, array $secondColl): array
 {
-    $result = [];
     $getStatus = function (string $key) use ($firstColl, $secondColl): string {
         if (array_key_exists($key, $firstColl) && array_key_exists($key, $secondColl)) {
             return ($firstColl[$key] === $secondColl[$key]) ? 'saved' : 'changed';

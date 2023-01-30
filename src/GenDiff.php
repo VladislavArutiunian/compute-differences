@@ -35,17 +35,18 @@ function buildDiff(array $firstColl, array $secondColl): array
     };
     $keys = array_unique(array_merge(array_keys($firstColl), array_keys($secondColl)));
     $sortedKeys = fSort($keys, fn($left, $right) => $left <=> $right);
-    foreach ($sortedKeys as $key) {
+    return array_reduce($sortedKeys, function ($acc, $key) use ($getStatus, $firstColl, $secondColl) {
         $firstValue = $firstColl[$key] ?? null;
         $secondValue = $secondColl[$key] ?? null;
+        $newAcc = $acc;
         if (isAssocArray($firstValue) && isAssocArray($secondValue)) {
-            $result[] = createNode($key, buildDiff($firstValue, $secondValue));
+            $newAcc[] = createNode($key, buildDiff($firstValue, $secondValue));
         } else {
             $status = $getStatus($key);
-            $result[] = createDifference($key, $firstValue, $secondValue, $status);
+            $newAcc[] = createDifference($key, $firstValue, $secondValue, $status);
         }
-    }
-    return $result;
+        return $newAcc;
+    }, []);
 }
 
 function isAssocArray(mixed $value): bool

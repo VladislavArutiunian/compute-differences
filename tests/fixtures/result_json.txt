@@ -1,0 +1,24 @@
+{
+  "common": {
+    "follow": {"newValue": false, "status": "added"},
+    "setting1": {"oldValue": "Value 1", "status": "saved"},
+    "setting2": {"oldValue": 200, "status": "deleted"},
+    "setting3": {"oldValue": true, "newValue": null, "status": "changed"},
+    "setting4": {"newValue": "blah blah", "status": "added"},
+    "setting5": {"newValue": {"key5": "value5"}, "status": "added"},
+    "setting6": {
+      "doge": {
+        "wow": {"oldValue": "", "newValue": "so much", "status": "changed"}
+      },
+      "key": {"oldValue": "value", "status": "saved"},
+      "ops": {"newValue": "vops", "status": "added"}
+    }
+  },
+  "group1": {
+    "baz": {"oldValue": "bas", "newValue": "bars", "status": "changed"},
+    "foo": {"oldValue": "bar", "status": "saved"},
+    "nest": {"oldValue": {"key": "value"}, "newValue": "str", "status": "changed"}
+  },
+  "group2": {"oldValue": {"abc": 12345, "deep": {"id": 45}}, "status": "deleted"},
+  "group3": {"newValue": {"deep": {"id": {"number": 45}}, "fee": 100500}, "status": "added"}
+}

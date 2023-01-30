@@ -14,35 +14,44 @@ class GenDiffTest extends TestCase
         return realpath(implode('/', $fullPath));
     }
 
-    public function testJsonStylish()
+    /**
+     * @dataProvider fileProvider
+     */
+    public function testStyleStylish(string $fileName1, string $fileName2)
     {
-        $nestedJson1 = $this->getFixtureFullPath('nested1.json');
-        $nestedJson2 = $this->getFixtureFullPath('nested2.json');
+        $file1 = $this->getFixtureFullPath($fileName1);
+        $file2 = $this->getFixtureFullPath($fileName2);
         $resultFile = $this->getFixtureFullPath('result_stylish.txt');
-        $this->assertStringEqualsFile($resultFile, genDiff($nestedJson1, $nestedJson2));
+        $this->assertStringEqualsFile($resultFile, genDiff($file1, $file2));
     }
 
-    public function testYamlStylish()
+    /**
+     * @dataProvider fileProvider
+     */
+    public function testJsonStylePlain(string $fileName1, string $fileName2)
     {
-        $nestedYaml1 = $this->getFixtureFullPath('nested1.yaml');
-        $nestedYaml2 = $this->getFixtureFullPath('nested2.yaml');
-        $resultFile = $this->getFixtureFullPath('result_stylish.txt');
-        $this->assertStringEqualsFile($resultFile, genDiff($nestedYaml1, $nestedYaml2));
-    }
-
-    public function testJsonPlain()
-    {
-        $nestedJson1 = $this->getFixtureFullPath('nested1.json');
-        $nestedJson2 = $this->getFixtureFullPath('nested2.json');
+        $file1 = $this->getFixtureFullPath($fileName1);
+        $file2 = $this->getFixtureFullPath($fileName2);
         $resultFile = $this->getFixtureFullPath('result_plain.txt');
-        $this->assertStringEqualsFile($resultFile, genDiff($nestedJson1, $nestedJson2, 'plain'));
+        $this->assertStringEqualsFile($resultFile, genDiff($file1, $file2, 'plain'));
     }
 
-    public function testYamlPlain()
+    /**
+     * @dataProvider fileProvider
+     */
+    public function testJsonStyleJson(string $fileName1, string $fileName2)
     {
-        $nestedYaml1 = $this->getFixtureFullPath('nested1.yaml');
-        $nestedYaml2 = $this->getFixtureFullPath('nested2.yaml');
-        $resultFile = $this->getFixtureFullPath('result_plain.txt');
-        $this->assertStringEqualsFile($resultFile, genDiff($nestedYaml1, $nestedYaml2, 'plain'));
+        $file1 = $this->getFixtureFullPath($fileName1);
+        $file2 = $this->getFixtureFullPath($fileName2);
+        $resultFile = $this->getFixtureFullPath('result_json.txt');
+        $this->assertStringEqualsFile($resultFile, genDiff($file1, $file2, 'json'));
+    }
+
+    public function fileProvider(): array
+    {
+        return [
+            'json file names' => ['nested1.json', 'nested2.json'],
+            'yaml file names' => ['nested1.yaml', 'nested2.yaml']
+        ];
     }
 }

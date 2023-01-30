@@ -16,3 +16,6 @@ https://asciinema.org/a/ct3EidGQhX5GE3uZpa9QyEgNh
 
 nested difference in Plain Format (json & yaml)
 https://asciinema.org/a/79w0sZtw9xldcJCw7tA0loK56
+
+nested difference in Json Format (json & yaml)
+https://asciinema.org/a/ptxYK7LS1sPVlAf9ICzxpBGJb

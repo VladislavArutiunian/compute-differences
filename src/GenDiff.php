@@ -4,6 +4,7 @@ namespace Code\GenDiff;
 
 use function Code\Formatters\Plain\format as convertToPlain;
 use function Code\Formatters\Stylish\format as convertToStylish;
+use function Code\Formatters\Json\format as convertToJson;
 use function Code\Functional\Difference\createDifference;
 use function Code\Functional\Difference\createNode;
 use function Code\Functional\Parsers\parse;
@@ -18,6 +19,7 @@ function genDiff(string $firstPath, string $secondPath, string $format = 'stylis
     return match ($format) {
         "stylish" => convertToStylish($diff),
         "plain" => convertToPlain($diff),
+        "json" => convertToJson($diff),
         default => throw new \Exception("No such format"),
     };
 }

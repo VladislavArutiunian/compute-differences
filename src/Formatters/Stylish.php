@@ -30,19 +30,19 @@ function formatDifference(array $difference, int $depth): string
     $key = Difference\getKey($difference);
     return match (Difference\getStatus($difference)) {
         'added' => sprintf(
-            "$addIntend%s:%s",
+            "$addIntend%s: %s",
             $key, formatValue($newValue, $depth + 1)
         ),
         'saved' => sprintf(
-            "$savedIntend%s:%s",
+            "$savedIntend%s: %s",
             $key, formatValue($newValue, $depth + 1)
         ),
         'deleted' => sprintf(
-            "$deleteIntend%s:%s",
+            "$deleteIntend%s: %s",
             $key, formatValue($oldValue, $depth + 1)
         ),
         'changed' => sprintf(
-            "$deleteIntend%s:%s\n$addIntend%s:%s",
+            "$deleteIntend%s: %s\n$addIntend%s: %s",
             $key,
             formatValue($oldValue, $depth + 1),
             $key,
@@ -61,17 +61,17 @@ function formatNode(array $node, int $depth): string
 function formatValue(mixed $value, int $depth): string
 {
     if (!is_array($value)) {
-        return ($value === '') ? "" : " $value";
+        return $value;
     }
     $valueIndent = str_repeat(DEFAULT_INTEND, $depth);
     $lines = array_map(
         function ($key, $item) use ($valueIndent, $depth) {
-            return sprintf("$valueIndent%s:%s", $key, formatValue($item, $depth + 1));
+            return sprintf("$valueIndent%s: %s", $key, formatValue($item, $depth + 1));
         },
         array_keys($value),
         $value
     );
     $bracketIntend = str_repeat(DEFAULT_INTEND, $depth - 1);
-    $result = [" {", ...$lines, "$bracketIntend}"];
+    $result = ["{", ...$lines, "$bracketIntend}"];
     return implode("\n", $result);
 }

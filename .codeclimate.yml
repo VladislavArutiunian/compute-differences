@@ -1,0 +1,7 @@
+plugins:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - php:
+            mass_threshold: 99

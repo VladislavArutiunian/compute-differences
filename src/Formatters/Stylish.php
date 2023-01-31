@@ -30,18 +30,9 @@ function formatDifference(array $difference, int $depth): string
     $oldValue = Difference\getOldValue($difference);
     $key = Difference\getKey($difference);
     return match (Difference\getStatus($difference)) {
-        'added' => sprintf(
-            "$addIntend%s: %s",
-            $key, formatValue($newValue, $depth + 1)
-        ),
-        'saved' => sprintf(
-            "$savedIntend%s: %s",
-            $key, formatValue($newValue, $depth + 1)
-        ),
-        'deleted' => sprintf(
-            "$deleteIntend%s: %s",
-            $key, formatValue($oldValue, $depth + 1)
-        ),
+        'added' => sprintf("$addIntend%s: %s", $key, formatValue($newValue, $depth + 1)),
+        'saved' => sprintf("$savedIntend%s: %s", $key, formatValue($newValue, $depth + 1)),
+        'deleted' => sprintf("$deleteIntend%s: %s", $key, formatValue($oldValue, $depth + 1)),
         'changed' => sprintf(
             "$deleteIntend%s: %s\n$addIntend%s: %s",
             $key,

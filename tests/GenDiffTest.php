@@ -28,7 +28,7 @@ class GenDiffTest extends TestCase
     /**
      * @dataProvider fileProvider
      */
-    public function testJsonStylePlain(string $fileName1, string $fileName2)
+    public function testStylePlain(string $fileName1, string $fileName2)
     {
         $file1 = $this->getFixtureFullPath($fileName1);
         $file2 = $this->getFixtureFullPath($fileName2);
@@ -39,7 +39,7 @@ class GenDiffTest extends TestCase
     /**
      * @dataProvider fileProvider
      */
-    public function testJsonStyleJson(string $fileName1, string $fileName2)
+    public function testStyleJson(string $fileName1, string $fileName2)
     {
         $file1 = $this->getFixtureFullPath($fileName1);
         $file2 = $this->getFixtureFullPath($fileName2);

@@ -47,7 +47,7 @@ function formatValue(mixed $value): string
 {
     if (is_array($value)) {
         return '[complex value]';
-    } elseif ($value == 'null' || $value == 'true' || $value == 'false') {
+    } elseif ($value == 'null' || $value == 'true' || $value == 'false' || is_int($value)) {
         return $value;
     } else {
         return sprintf("'%s'", $value);

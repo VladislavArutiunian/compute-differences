@@ -17,8 +17,17 @@ function parse(string $filePath): array
 function convertToArray(string $path, string $fileExtension): array
 {
     return match ($fileExtension) {
-        "json" => json_decode(file_get_contents($path), true),
-        "yaml", "yml" => Yaml::parse(file_get_contents($path)),
+        "json" => json_decode(getFile($path), true),
+        "yaml", "yml" => Yaml::parse(getFile($path)),
         default => throw new Exception("Неверное расширение файла"),
     };
+}
+
+/**
+ * @throws Exception
+ */
+function getFile(string $filePath): string
+{
+    $result = file_get_contents($filePath);
+    return (is_string($result)) ? $result : throw new \Exception("file " . $filePath . " doesn't exist");
 }

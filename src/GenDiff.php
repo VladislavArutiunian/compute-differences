@@ -37,14 +37,13 @@ function buildDiff(array $firstColl, array $secondColl): array
     return array_reduce($sortedKeys, function ($acc, $key) use ($getStatus, $firstColl, $secondColl) {
         $firstValue = $firstColl[$key] ?? null;
         $secondValue = $secondColl[$key] ?? null;
-        $newAcc = $acc;
         if (isAssocArray($firstValue) && isAssocArray($secondValue)) {
-            $newAcc[] = createNode($key, buildDiff($firstValue, $secondValue));
+            $newNode = createNode($key, buildDiff($firstValue, $secondValue));
         } else {
             $status = $getStatus($key);
-            $newAcc[] = createDifference($key, $firstValue, $secondValue, $status);
+            $newNode = createDifference($key, $firstValue, $secondValue, $status);
         }
-        return $newAcc;
+        return array_merge($acc, [$newNode]);
     }, []);
 }
 

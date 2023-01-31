@@ -12,7 +12,8 @@ function format(array $data, int $depth = 1): string
         function ($value) use ($depth) {
             return match (Difference\getType($value)) {
                 'difference' => formatDifference($value, $depth),
-                'node' => formatNode($value, $depth)
+                'node' => formatNode($value, $depth),
+                default => throw new \Exception("Node type " . Difference\getType($value) . " doesn't exist")
             };
         },
         $data
@@ -46,7 +47,8 @@ function formatDifference(array $diff, int $depth): string
             formatValue($oldValue),
             formatValue($newValue),
             $status
-        )
+        ),
+        default => throw new \Exception("Status $status doesn't exist")
     };
     return sprintf("$diffIntend\"%s\": {%s},", $key, $value);
 }

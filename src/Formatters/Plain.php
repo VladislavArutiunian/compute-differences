@@ -10,6 +10,7 @@ function format(array $data, array $parents = []): string
             return match (Difference\getType($value)) {
                 'difference' => formatDifference($value, $parents),
                 'node' => formatNode($value, $parents),
+                default => throw new \Exception("Node type " . Difference\getType($value) . " doesn't exist")
             };
     }, $data);
     $result = array_filter($lines, fn ($line) => $line !== '');
@@ -31,7 +32,8 @@ function formatDifference(array $diff, array $parents): string
             "Property $parentsStr was updated. From %s to %s",
             formatValue($oldValue),
             formatValue($newValue)
-        )
+        ),
+        default => throw new \Exception("Status " . Difference\getStatus($diff) . " doesn't exist")
     };
 }
 

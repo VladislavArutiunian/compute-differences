@@ -12,6 +12,7 @@ function format(mixed $data, int $depth = 1): string
         return match (Difference\getType($value)) {
             'difference' => formatDifference($value, $depth),
             'node' => formatNode($value, $depth),
+            default => throw new \Exception("Node type " . Difference\getType($value) . " doesn't exist")
         };
     }, $data);
     $bracketIndent = str_repeat(DEFAULT_INTEND, $depth - 1);
@@ -48,6 +49,7 @@ function formatDifference(array $difference, int $depth): string
             $key,
             formatValue($newValue, $depth + 1)
         ),
+        default => throw new \Exception("Status " . Difference\getStatus($difference) . " doesn't exist")
     };
 }
 

@@ -25,7 +25,7 @@ function createNode(string $key, array $children): array
 function normalize(mixed $value): mixed
 {
     return match (\gettype($value)) {
-        "boolean" => var_export($value, 1),
+        "boolean" => var_export($value, true),
         "NULL" => 'null',
         default => $value
     };

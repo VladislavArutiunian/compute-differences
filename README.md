@@ -18,7 +18,7 @@ simple difference - json
 - TDD, PHPUnit
 - Recursions,
 - Docopt library fot cli interactions,
-- Github Action with checking PSR-12 standard
+- Github Action with checking PSR-12 standards and making tests
 
 ### Asciinemas:
 https://asciinema.org/a/551494?t=4

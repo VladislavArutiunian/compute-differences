@@ -7,9 +7,18 @@
 # Gendiff Hexlet Project
 
 Difference Calculator is a program that determines the difference between two data structures.
+
 Analog for http://www.jsondiff.com/, for instance.
+
 A similar mechanism is used when outputting tests or when automatically tracking changes in configuration files.
 simple difference - json
+
+### Tech stack:
+- PHP BoilerPlate,
+- TDD,
+- Recursions,
+- Docopt library fot cli interactions,
+- Github Action with checking PSR-12 standard
 
 ### Asciinemas:
 https://asciinema.org/a/551494?t=4

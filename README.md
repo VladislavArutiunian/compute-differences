@@ -5,7 +5,13 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/183b07deac29774fb259/test_coverage)](https://codeclimate.com/github/VladislavArutiunian/php-project-48/test_coverage)
 
 # Gendiff Hexlet Project
+
+Difference Calculator is a program that determines the difference between two data structures.
+Analog for http://www.jsondiff.com/, for instance.
+A similar mechanism is used when outputting tests or when automatically tracking changes in configuration files.
 simple difference - json
+
+### Asciinemas:
 https://asciinema.org/a/551494?t=4
 
 simple difference - yaml
